@@ -1,0 +1,28 @@
+<div id="header">
+	<div class="headerNav">
+		<a class="logo" href="#">LOGO</a>
+		
+<!-- 		<div style="color: #b9ccda; padding-top: 15px;font-size: 25px;" >JR-ATM</div> -->
+		<ul class="nav">
+			<li style="color: #b9ccda;">欢迎 ${user.nickName}</li>
+			<li><a href="#" onclick="updatePwd();">修改密码</a></li>
+			<li><a href="${ADMIN_PATH}/toLogin">注销</a></li>
+			<li><a href="${ADMIN_PATH}/doExit">退出</a></li>
+		</ul>
+	</div>
+</div>
+<script type="text/javascript">
+	var updatePwd = function() {
+		var dialog = parent.sy.modalDialog({
+			title : '修改密码',
+			url : '${ADMIN_PATH}/toUpdatePwd',
+			buttons : [ {
+				text : '确定',
+				handler : function() {
+					dialog.find('iframe').get(0).contentWindow.submitForm(
+							dialog,parent.$);
+				}
+			} ]
+		},400,180);
+	};
+</script>
